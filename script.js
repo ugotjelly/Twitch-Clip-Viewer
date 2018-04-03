@@ -139,7 +139,7 @@ let find = function(){
 };
 
 let loadImage = function(i, x){
-    x.onerror=function(){console.log("could not load image");x.src="clips-404-320x180.png";}
+    x.onerror=function(){console.log("could not load image");x.src="images/clips-404-320x180.png";}
     x.src=videos[i].thumbnail;
 };
 
@@ -227,7 +227,7 @@ let View = function(i){
         //$('html,body').scrollTop(0);
         //$("#prev").html('<div id="prevImg">')
         document.getElementById("prevImg").addEventListener("click", prevVid);
-        player.innerHTML = '<div id="prevImg"></div><div id="nextImg"></div><img src="close-x.png" id="close" width="35" height="35"><div id="innerPlayer">'+clip.embed_html+'</div>';
+        player.innerHTML = '<div id="prevImg"></div><div id="nextImg"></div><img src="images/close-x.png" id="close" width="35" height="35"><div id="innerPlayer">'+clip.embed_html+'</div>';
         document.getElementById("close").addEventListener("click", closeVid);
         player.getElementsByTagName("iframe")[0].style.width ="800px";
         player.getElementsByTagName("iframe")[0].style.height ="500px";
