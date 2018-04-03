@@ -67,7 +67,7 @@ let find = function(){
     $("#more").html("<img src='loading.gif' width='150' height='100'>");
     if(user == "")
     {
-        let json = $.getJSON(channel + "_clips.txt", function(json) {
+        let json = $.getJSON("clips/" +channel + "_clips.txt", function(json) {
             for(let i=0; i<json.clips.length;i++){
                 //for(let i=0; i<LOAD_AMOUNT;i++){
                 let d = new Date(json.clips[i].created_at);
@@ -101,7 +101,7 @@ let find = function(){
     else 
     {   
         let index = 0;
-        let json = $.getJSON(channel + "_clips.txt", function(json) {
+        let json = $.getJSON("clips/" +channel + "_clips.txt", function(json) {
             for(let i=0; i<json.clips.length;i++){
                 if(json.clips[i].curator.name==user){
                     let d = new Date(json.clips[i].created_at);
@@ -164,7 +164,7 @@ let loadmore = function(){
     let loadOffset = loaded+LOAD_AMOUNT;
     if(user=="")
     {
-        let json = $.getJSON(channel + "_clips.txt", function(json) 
+        let json = $.getJSON("clips/" + channel + "_clips.txt", function(json) 
         {
             for(let i=loaded; i<loadOffset;i++)
             {
@@ -188,7 +188,7 @@ let loadmore = function(){
     else 
     {
         let oldIndex = index;
-        let json = $.getJSON(channel + "_clips.txt", function(json) 
+        let json = $.getJSON("clips/" + channel + "_clips.txt", function(json) 
         {
             for(let i=stopped_at; i<json.clips.length;i++)
             {

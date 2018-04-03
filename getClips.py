@@ -13,7 +13,8 @@ headers = { "Host": "api.twitch.tv",
 "X-Requested-With": "XMLHttpRequest"}
    
 def get_proxies():
-    lines = [line.rstrip("\n") for line in open("../freeproxy_9896982925.txt")]
+    #lines = [line.rstrip("\n") for line in open("../freeproxy_9896982925.txt")]
+    lines = ["47.88.20.189:80","159.65.164.123:3128","216.218.188.79:80","97.72.175.238:87","159.65.172.65:3128","159.65.166.160:3128","159.65.166.88:8118","52.3.222.20:3128","70.169.133.162:48678","70.169.136.179:48678","66.242.91.23:80","104.198.99.172:80","109.121.163.56:53281","159.65.160.66:8118","67.205.151.225:3128","159.65.170.248:8118","109.121.163.75:53282","159.65.172.232:8118"]
     return lines
 
     
@@ -33,17 +34,17 @@ if __name__ == "__main__":
     #exit(1)
     
     if INDEX == 0:
-        f = open(CHANNEL + "_clips.txt", 'w', encoding='utf-8')
+        f = open("clips/" + CHANNEL + "_clips.txt", 'w', encoding='utf-8')
     else: 
-        f = open(CHANNEL + "_clips.txt", 'a', encoding='utf-8')
+        f = open("clips/" +CHANNEL + "_clips.txt", 'a', encoding='utf-8')
     offSet = 0
     proxy_list = get_proxies()
         
     while True:
     
         #print(str(INDEX).encode('utf-8'))
-        
-        proxy = {"http": proxy_list[offSet]}
+        print("PROXY:" + str(offSet%len(proxy_list)))
+        proxy = {"http": proxy_list[offSet%len(proxy_list)]}
         POS = base64.b64encode(str(INDEX).encode('utf-8'))
         URL = "https://api.twitch.tv/kraken/clips/top?channel=" + CHANNEL + "&cursor=" + str(POS.decode()) + "&limit=100&period=all&on_site=1"
         print(URL)
